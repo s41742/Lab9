@@ -1,6 +1,6 @@
 ---
 title: "Lab9"
-author: "Your Name"
+author: "Sabrina Xu"
 date: "2024-11-07"
 output: "github_document"
 ---
@@ -13,7 +13,7 @@ library(bruceR)
 library(haven)
 
 
-lab9data<-read_sav("C:/Users/Colin/Documents/lab9data.sav")
+lab9data<-read_sav("/Users/xushimin/Documents/GitHub/Lab9/lab9data.sav")
 
 
 
@@ -51,17 +51,33 @@ EFA(lab9data, "FSMI", 1:6, rev = 3, method = "pa", plot.scree = TRUE, nfactors =
 ```
 # Now test reliability for the status seeking subscale
 ```{r}
-
+Alpha(lab9data, "FSMI", 31:36, rev = 36)
 ```
 # Q1: What is the Cronbach's alpha of this subscale? Is it a reliable measure of status seeking? Why? 
 
+0.830. It is a reliable measure of status seeking. This is because it is higher than 0.8 but not as high as larger than 0.95 to cause reduancy.
+
 # Now run a factor analysis on the Mate Retention (Breakup Concern) subscale
 ```{r}
-
-
-
+EFA(lab9data, "FSMI", 49:54, method = "pa", plot.scree = TRUE, nfactors = c("parallel"))
 ```
 
 # Q2: How many factors can you identify from the results? Based on what? What is the range of the factor loadings? What is item that has the highest factor loading? In conclusion, is this a good measure of break up concern and why?
 
+We can identify 1 factor from the results. This is because the scree plot shows a clear “elbow” where the curve starts to flatten after the first factor.The range is 0.8 23-0.940. The attem has highest loading is FSMI51, it is a good measure because factor loadings are all above 0.4.
+
 # Q3: Pick another subscale from FSMI. Test reliability and factor analysis. Answer all the questions  above. 
+
+for the reliability part, the Cronbach's alpha is 0.836 so it is reliable. For factor analysis, we can identify 1 factor from the results. This is because the scree plot shows a clear “elbow” where the curve starts to flatten after the first factor.The range is 0.687-0.833. The attem has highest loading is FSMI24, it is a good measure because factor loadings are all above 0.4.
+
+
+
+```{r}
+Alpha(lab9data, "FSMI", 13:18, rev = 16)
+
+```
+
+```{r}
+EFA(lab9data, "FSMI", 19:24, method = "pa", plot.scree = TRUE, nfactors = c("parallel"))
+
+```
